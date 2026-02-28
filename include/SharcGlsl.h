@@ -42,6 +42,7 @@
 #define lerp mix
 #define rcp(x) (1.0/(x))
 #define saturate(x) clamp(x,0,1)
+#define countbits bitCount
 #define asfloat uintBitsToFloat
 #define asuint floatBitsToUint
 #define f32tof16(f) packHalf2x16(vec2(f, 0))

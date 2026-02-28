@@ -1,3 +1,12 @@
+## 1.6.5
+
+- Added optional **SHARC_ENABLE_FADE_ACCELERATION** (default: off). When enabled, each resolve entry tracks whether the current frame's luminance is below the previous frame's. If fading is detected for all 32 tracked frames, the history is reset to match the current frame's sample count, accelerating convergence. Requires ```SharcResolveParameters::frameIndex``` to be set.
+- **SHARC_LINEAR_PROBE_WINDOW_SIZE** default increased from 4 to 8.
+- Introduced auxiliary function ```SharcLuma()```, shared by the anti-firefly filter and fade acceleration features.
+- Refactor:
+  - Replaced ```SharcResolveParameters::enableAntiFireflyFilter``` with ```frameIndex``` (required for **SHARC_ENABLE_FADE_ACCELERATION**).
+  - Renamed ```SharcPackedData::luminanceM2``` to ```sampleDataExt``` in SharcTypes.h. Carried out the counterpart changes for ```SharcVoxelData::luminanceM2``` accordingly.
+
 ## 1.6.3
 
 - SharcTypes.h now defines the base data types needed for correct variable declarations when those types are required before including SharcCommon.h
