@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024, NVIDIA CORPORATION. All rights reserved.
+ * Copyright (c) 2023-2026, NVIDIA CORPORATION. All rights reserved.
  *
  * NVIDIA CORPORATION and its licensors retain all intellectual property
  * and proprietary rights in and to this software, related documentation
@@ -48,6 +48,8 @@
 #define f32tof16(f) packHalf2x16(vec2(f, 0))
 #define f16tof32(u) unpackHalf2x16(u).x
 #define InterlockedAdd atomicAdd
+#define InterlockedOr atomicOr
+#define InterlockedExchange atomicExchange
 #define InterlockedCompareExchange atomicCompSwap
 
 #define HASH_GRID_LOOP_ATTR [[dont_unroll]]

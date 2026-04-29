@@ -1,3 +1,12 @@
+## 1.7.2
+
+- Added an experimental responsive lighting mode to support short-lived, high-intensity light sources, controlled by the **SHARC_RESPONSIVE_LIGHTING** define. ```SharcUpdateHit()``` and ```SharcUpdateMiss()``` now include an additional parameter to indicate a responsive signal. This parameter is ignored when responsive lighting is disabled. ```SharcGetCachedRadiance()``` has also been extended with an extra parameter that allows skipping responsive lighting contributions when they are known to have no impact on the current scene
+- Fixed a bug where the last vertex contribution could be missed during the update pass
+- The cache update pass now uses only 2 entries by default with resampling, which can improve performance and reduce register pressure in some cases
+- Added a compact version of the hash grid with 32-bit hash keys
+- Redesigned the global hash grid API to support multiple hash grid variants through a unified interface. Each grid must define custom **HASH_GRID_PREFIX** and **HASH_GRID_CONST_PREFIX** values
+- Updated documentation
+
 ## 1.6.5
 
 - Added optional **SHARC_ENABLE_FADE_ACCELERATION** (default: off). When enabled, each resolve entry tracks whether the current frame's luminance is below the previous frame's. If fading is detected for all 32 tracked frames, the history is reset to match the current frame's sample count, accelerating convergence. Requires ```SharcResolveParameters::frameIndex``` to be set.
